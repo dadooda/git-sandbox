@@ -19,7 +19,7 @@ Git Sandbox is a tool, which allows you to **conduct Git experiments** pretendin
 
 **If you don't know how Git will behave in a particular situation, go try it in a sandbox NOW.**
 
-Don't put it off, don't try to work around it by avoiding the aspects you don't know well. In other words &mdash; **just be brave enough to try it**. It won't bite, it'll take you 5 minutes, but you'll gain solid knowledge and confidence which will be yours for years.
+Don't put it off, don't try to work around it by avoiding aspects you don't know well. In other words &mdash; **just be brave enough to try it**. It won't bite, it'll take you 5 minutes, but you'll gain solid knowledge and confidence which will be yours for years.
 
 Setup
 -----
