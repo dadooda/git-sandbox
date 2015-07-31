@@ -10,7 +10,7 @@ In my Git practice I don't try very hard to grasp what the docs say. Instead, I 
 
 I started by creating repositories and working copies by hand, which took a quite an effort each time. Considering the fact that during experiments you often need to delete everything and start anew, that was particularly painful.
 
-Thus, step by step, the **Git Sandbox** was born.
+Thus, step by step, **Git Sandbox** was born.
 
 What's Git Sandbox?
 -------------------
