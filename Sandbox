@@ -1,0 +1,116 @@
+#!/bin/bash
+
+# Get script name & path.
+SN=${0##*/}
+SP=${0%/*}
+
+#--------------------------------------- Configuration
+
+C_REPO=".repo.git"
+
+#--------------------------------------- Functions
+
+check_bash_version()
+{
+  # Check version.
+  # Probably for various `,,` and `^^` to work properly.
+  if [ `echo $BASH_VERSION | cut -d. -f1` -lt 4 ]; then
+    echo "Bash version >= 4.x is required, yours is $BASH_VERSION" >&2
+    exit 1
+  fi
+}
+
+cmd()
+{
+  echo "### $@"
+  eval "$@"
+}
+
+#--------------------------------------- Invocations
+
+do_clone()
+{
+  USER=$1
+
+  if [ -z "$USER" ]; then
+    echo "USAGE: $SN <user>"
+    echo "EXAMPLE: $SN alex"
+    exit 1
+  fi
+
+  USER=${USER,,}
+  USER_NAME=${USER^}
+  USER_EMAIL="${USER}@sandbox.org"
+
+  cmd git clone $C_REPO $USER || exit 1
+
+  WC_CONF="$USER/.git/config"
+  echo -n "Editing '$WC_CONF'..."
+  echo -e "[user]\n\temail = $USER_EMAIL\n\tname = $USER_NAME" >> $WC_CONF
+  echo " done"
+}
+
+do_init()
+{
+  # NOTE: The command is interactive, there's no need to show any sort of "usage" or whatever.
+
+  # IMPORTANT! cd.
+  cd $SP
+
+  if [ -d "$C_REPO" ]; then
+    echo -n "Reinitialize '$C_REPO'? Existing working copies will get out of sync! [N]: "
+    read REPLY
+    [ "${REPLY,,}" = "y" ] || exit 0
+  fi
+
+  cmd git init --bare $C_REPO
+}
+
+do_sandbox()
+{
+  case $1 in
+  "help")
+    echo "Once the setup is complete, use these commands:"
+    echo
+    echo "$ . PS1             - Initialize the shell prompt"
+    echo "$ ./Init            - (Re)Initialize the repository in '$C_REPO'"
+    echo "$ ./Clone <name>    - Create a working copy of developer <name>"
+    ;;
+  "setup")
+    # IMPORTANT! Cd.
+    cd $SP
+    [ -L Init ] || cmd ln -s $SN Init
+    [ -L Clone ] || cmd ln -s $SN Clone
+
+    echo "Congratulations! The setup is complete."
+    echo
+    ./$SN help
+    ;;
+  *)
+    echo "USAGE: $SN <command>"
+    echo
+    echo "* help    - Display help message"
+    echo "* setup   - Set up symlinks to run the sandbox"
+    exit 1
+  esac
+}
+
+#--------------------------------------- Main
+
+# We use Bash 4.x functions all over, make sure it's present.
+check_bash_version
+
+case $SN in
+"Clone")
+  do_clone "$@"
+  ;;
+"Init")
+  do_init "$@"
+  ;;
+"Sandbox")
+  do_sandbox "$@"
+  ;;
+*)
+  echo "Unknown invocation: '$SN'" >&2
+  exit 1
+esac

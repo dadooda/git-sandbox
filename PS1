@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Simplified PS1 for screencasts, doc samples etc.
+# Do a ". PS1" in an active shell.
+
+# Print current Git branch, decorated for PS1.
+# If not in Git branch, print nothing.
+#
+# Generally taken from: http://subhojitpaul.blogspot.ru/2013/03/display-current-git-branch-in-bash.html.
+_gsb_git_branch_prompt()
+{
+  # Silently quit if not a Git dir.
+  git branch >& /dev/null || return 0
+
+  local BR=`git branch 2> /dev/null | sed -n '/^\*/s/^\* //p'`
+
+  # Print with decoration.
+  echo "[$BR]"
+}
+
+PS1='\W$(_gsb_git_branch_prompt)\$ '
