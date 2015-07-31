@@ -24,7 +24,7 @@ Don't put it off, don't try to work around it by avoiding the aspects you don't 
 Setup
 -----
 
-Download the files `PS1` and `Sandbox` into an empty directory, do a `chmod +x Sandbox`, then run `./Sandbox setup`. Then follow the on-screen help. A complete example follows.
+Download the files `PS1` and `Sandbox` into an empty directory, do a `chmod +x Sandbox`, run `./Sandbox setup`. Then follow the on-screen help. A complete example follows.
 
 Example: Simulating a merge conflict
 ------------------------------------
