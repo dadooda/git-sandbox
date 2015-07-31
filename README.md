@@ -70,9 +70,10 @@ Example: Simulating a merge conflict
     bob[master]$ git add . && git commit -a -m "Update" && git push origin master
     ```
 
-7. Back to Alice's working copy, add a line, commit, then fetch and merge:
+7. Back in Alice's working copy, add a line, commit, then fetch and merge:
 
     ```sh
+    bob[master]$ cd ../alice
     alice[master]$ echo "Mary had a little ham" >> poem.txt
     alice[master]$ git add . && git commit -a -m "Update" && git push origin master
     error: failed to push some refs to 'git-xperiment/.repo.git'
