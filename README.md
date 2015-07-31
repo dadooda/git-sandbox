@@ -91,6 +91,6 @@ The conflict! That's what we wanted, and we got it. Proceed further to your liki
 Cheers!
 -------
 
-All sorts of feedback is highly appreciated.
+Feedback of any kind is highly appreciated.
 
 &mdash; Alex Fortuna, &copy; 2015
