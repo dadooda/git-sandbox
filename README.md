@@ -8,7 +8,7 @@ Git is a practical thing. Maybe that's the reason why it's at times difficult to
 
 In my Git practice I don't try very hard to grasp what the docs say. Instead, I pick a particular case, have a quick glance at the docs to have a general idea, and then **try the case in a sandbox**.
 
-I started by creating repositories and working copies by hand, which took a quite an effort every time. Considering the fact that during experiments you often need to delete everything and start anew, that was particularly painful.
+I started by creating repositories and working copies by hand, which took a quite an effort each time. Considering the fact that during experiments you often need to delete everything and start anew, that was particularly painful.
 
 Thus, step by step, the **Git Sandbox** was born.
 
@@ -19,12 +19,12 @@ Git Sandbox is a tool, which allows you to **conduct Git experiments** pretendin
 
 **If you don't know how Git will behave in a particular situation, go try it in a sandbox NOW.**
 
-Don't put it off, don't try to work around the case by avoiding the aspects you don't know well. In other words &mdash; **just be brave enough to try it**. It won't bite, it'll take you 5 minutes, but you'll gain solid knowledge and confidence.
+Don't put it off, don't try to work around it by avoiding the aspects you don't know well. In other words &mdash; **just be brave enough to try it**. It won't bite, it'll take you 5 minutes, but you'll gain solid knowledge and confidence which will be yours for years.
 
 Setup
 -----
 
-Download the files `PS1` and `Sandbox` into an empty directory, do a `chmod +x Sandbox`, then run `./Sandbox setup`. A complete example follows.
+Download the files `PS1` and `Sandbox` into an empty directory, do a `chmod +x Sandbox`, then run `./Sandbox setup`. Then follow the on-screen help. A complete example follows.
 
 Example: Simulating a merge conflict
 ------------------------------------
@@ -36,7 +36,7 @@ Example: Simulating a merge conflict
     $ cd git-xperiment
     ```
 
-2. Download the files, do the setup:
+2. Download the sandbox scripts, do the setup:
 
     ```sh
     $ wget https://raw.github.com/dadooda/git-sandbox/master/{PS1,Sandbox}
