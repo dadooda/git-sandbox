@@ -39,7 +39,7 @@ Example: Simulating a merge conflict
 2. Download the sandbox scripts, do the setup:
 
     ```sh
-    $ wget https://raw.github.com/dadooda/git-sandbox/master/{PS1,Sandbox}
+    $ curl https://raw.githubusercontent.com/dadooda/git-sandbox/master/{PS1,Sandbox} -OO
     $ chmod +x Sandbox
     $ ./Sandbox setup
     $ . PS1
