@@ -51,7 +51,7 @@ Example: Simulating a merge conflict
     git-xperiment$ ./Init
     ```
 
-5. Predending to be developer Alice, start writing a great poem. Notice how the shell prompt changes as you step in and out developers' working copies:
+5. Predending to be developer Alice, start writing a great poem. Notice how **shell prompt changes** as you step in and out developers' working copies:
 
     ```sh
     git-xperiment$ ./Clone alice
