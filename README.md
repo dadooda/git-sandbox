@@ -32,11 +32,65 @@ Example: Simulating a merge conflict
 1. Create an empty directory and step into it:
 
     ```sh
-    $ mkdir git-merge-conflict
-    $ cd git-merge-conflict
+    $ mkdir git-xperiment
+    $ cd git-xperiment
     ```
+
+2. Download the files, do the setup:
+
+    ```sh
+    $ wget https://raw.github.com/dadooda/git-sandbox/master/{PS1,Sandbox}
+    $ chmod +x Sandbox
+    $ ./Sandbox setup
+    $ . PS1
+    ```
+
+4. Now that everything is ready, start playing with Git. Initialize the repo:
+
+    ```sh
+    git-xperiment$ ./Init
+    ```
+
+5. Predending to be developer Alice, start writing a great poem. Notice how the shell prompt changes as you step in and out developers' working copies:
+
+    ```sh
+    git-xperiment$ ./Clone alice
+    git-xperiment$ cd alice
+    alice[]$ echo "The poem" > poem.txt
+    alice[]$ git add . && git commit -a -m "Update" && git push origin master
+    ```
+
+6. Connect one more developer, Bob. Let him add a line:
+
+    ```sh
+    alice[master]$ cd ..
+    git-xperiment$ ./Clone bob
+    git-xperiment$ cd bob
+    bob[master]$ echo "Mary had a little lamb" >> poem.txt
+    bob[master]$ git add . && git commit -a -m "Update" && git push origin master
+    ```
+
+7. Back to Alice's working copy, add a line, commit, then fetch and merge:
+
+    ```sh
+    alice[master]$ echo "Mary had a little ham" >> poem.txt
+    alice[master]$ git add . && git commit -a -m "Update" && git push origin master
+    error: failed to push some refs to 'git-xperiment/.repo.git'
+    hint: Updates were rejected because the tip of your current branch is behind
+    ...
+
+    alice[master]$ git fetch
+    alice[master]$ git merge origin/master
+    Auto-merging poem.txt
+    CONFLICT (content): Merge conflict in poem.txt
+    Automatic merge failed; fix conflicts and then commit the result.
+    ```
+
+The conflict! That's what we wanted, and we got it. Proceed further to your liking.
 
 Cheers!
 -------
+
+All sorts of feedback is highly appreciated.
 
 &mdash; Alex Fortuna, &copy; 2015
