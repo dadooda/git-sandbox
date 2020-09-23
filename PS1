@@ -15,7 +15,7 @@ _gsb_git_branch_prompt()
   local BR=`git branch 2> /dev/null | sed -n '/^\*/s/^\* //p'`
 
   # Print with decoration.
-  echo "[$BR]"
+  echo " ($BR)"
 }
 
 PS1='\W$(_gsb_git_branch_prompt)\$ '
